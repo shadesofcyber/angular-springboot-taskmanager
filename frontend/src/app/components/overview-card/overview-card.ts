@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 import { LucideClock, LucideLayoutList, LucideLoader, LucideCircleCheck } from '@lucide/angular';
+import { Task } from '../../models/task';
 
 @Component({
   selector: 'app-overview-card',
@@ -8,4 +9,18 @@ import { LucideClock, LucideLayoutList, LucideLoader, LucideCircleCheck } from '
   templateUrl: './overview-card.html',
   styleUrl: './overview-card.css',
 })
-export class OverviewCard {}
+export class OverviewCard {
+  tasks = input.required<Task[]>();
+
+  totalTasks = computed(() => this.tasks().length);
+
+  todoTasks = computed(() => this.tasks().filter((task) => task.status === 'TODO').length);
+
+  inProgressTasks = computed(
+    () => this.tasks().filter((task) => task.status === 'IN_PROGRESS').length,
+  );
+
+  completedTasks = computed(
+    () => this.tasks().filter((task) => task.status === 'COMPLETED').length,
+  );
+}

@@ -4,6 +4,16 @@ Eine Full-Stack Task-Management-Anwendung mit Angular-Frontend und Spring-Boot-B
 
 Das Projekt zeigt eine typische mehrschichtige Architektur mit REST API, DTOs, Validierung, Exception Handling, Status-Filterung, CRUD-Funktionen und interaktiver API-Dokumentation über Swagger / OpenAPI.
 
+## Screenshots
+
+### Dashboard
+
+![Dashboard](./screenshots/dashboard.png)
+
+### Swagger API Documentation
+
+![Swagger](./screenshots/swagger.png)
+
 ## Tech Stack
 
 ### Frontend

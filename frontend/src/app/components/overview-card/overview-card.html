@@ -4,7 +4,7 @@
   >
     <div class="flex flex-col space-y-5">
       <p class="text-md font-semibold tracking-wide text-gray-800">All Tasks</p>
-      <div class="text-4xl text-primary font-bold tracking-tight">24</div>
+      <div class="text-4xl text-primary font-bold tracking-tight">{{ totalTasks() }}</div>
       <p class="text-gray-500 text-sm font-semibold">Total amount of tasks</p>
     </div>
     <div class="flex items-center gap-2 text-primary">
@@ -20,7 +20,7 @@
   >
     <div class="flex flex-col space-y-5">
       <p class="text-md font-semibold tracking-wide text-gray-800">To Do</p>
-      <div class="text-4xl text-todo font-bold tracking-tight">10</div>
+      <div class="text-4xl text-todo font-bold tracking-tight">{{ todoTasks() }}</div>
       <p class="text-gray-500 text-sm font-semibold">Tasks to do</p>
     </div>
     <div class="flex items-center gap-2 text-todo">
@@ -36,7 +36,7 @@
   >
     <div class="flex flex-col space-y-5">
       <p class="text-md font-semibold tracking-wide text-gray-800">In Progress</p>
-      <div class="text-4xl text-progress font-bold tracking-tight">8</div>
+      <div class="text-4xl text-progress font-bold tracking-tight">{{ inProgressTasks() }}</div>
       <p class="text-gray-500 text-sm font-semibold">Tasks in progress</p>
     </div>
     <div class="flex items-center gap-2 text-progress">
@@ -52,7 +52,7 @@
   >
     <div class="flex flex-col space-y-5">
       <p class="text-md font-semibold tracking-wide text-gray-800">Completed</p>
-      <div class="text-4xl text-success font-bold tracking-tight">6</div>
+      <div class="text-4xl text-success font-bold tracking-tight">{{ completedTasks() }}</div>
       <p class="text-gray-500 text-sm font-semibold">Finished tasks</p>
     </div>
     <div class="flex items-center gap-2 text-success">

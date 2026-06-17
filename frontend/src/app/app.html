@@ -1,6 +1,6 @@
 <div class="min-h-screen bg-white border border-custom-border rounded-xl flex">
   <!-- sidebar startin here -->
-  <div class="w-100 flex flex-col items-start justify-between border-r border-r-custom-border">
+  <div class="flex flex-col items-start justify-between border-r border-r-custom-border">
     <div class="p-8 flex items-center justify-start gap-6 border-b border-b-custom-border w-full">
       <svg lucideCircleCheckBig class="size-10 text-primary"></svg>
       <h1 class="text-4xl font-bold">TaskPad</h1>
@@ -26,7 +26,7 @@
         <div class="flex flex-row items-center justify-between gap-4">
           <svg lucideLayoutList class="size-7 text-primary"></svg>
           <span class="text-lg w-full font-semibold cursor-pointer text-gray-700"
-            >Dummy Element 1</span
+            >Dummy Element 2</span
           >
         </div>
       </div>
@@ -39,7 +39,7 @@
         <div class="flex flex-row items-center justify-between gap-4">
           <svg lucideLayoutList class="size-7 text-primary"></svg>
           <span class="text-lg w-full font-semibold cursor-pointer text-gray-700"
-            >Dummy Element 1</span
+            >Dummy Element 3</span
           >
         </div>
       </div>
@@ -52,7 +52,7 @@
         <div class="flex flex-row items-center justify-between gap-4">
           <svg lucideLayoutList class="size-7 text-primary"></svg>
           <span class="text-lg w-full font-semibold cursor-pointer text-gray-700"
-            >Dummy Element 1</span
+            >Dummy Element 4</span
           >
         </div>
       </div>
@@ -65,7 +65,7 @@
         <div class="flex flex-row items-center justify-between gap-4">
           <svg lucideLayoutList class="size-7 text-primary"></svg>
           <span class="text-lg w-full font-semibold cursor-pointer text-gray-700"
-            >Dummy Element 1</span
+            >Dummy Element 5</span
           >
         </div>
       </div>
@@ -79,21 +79,25 @@
       <h1 class="text-3xl font-bold">Task Panel</h1>
       <p class="mt-2 text-gray-500">Manage your tasks and track your progress.</p>
     </div>
-    <app-overview-card />
+    <app-overview-card [tasks]="tasks()" />
 
     <app-status-filter [selectedStatus]="selectedStatus()" (statusChange)="loadTasks($event)" />
 
-    <div
-      class="border border-custom-border rounded-xl flex flex-col divide-y divide-custom-border overflow-hidden"
-    >
-      @for (task of tasks(); track task.id) {
-        <app-task-card
-          [task]="task"
-          (deleteTask)="deleteTask($event)"
-          (taskUpdated)="updateTask($event)"
-        />
-      }
-    </div>
+    @if (tasks().length > 0) {
+      <div
+        class="border border-custom-border rounded-xl flex flex-col divide-y divide-custom-border overflow-hidden"
+      >
+        @for (task of tasks(); track task.id) {
+          <app-task-card
+            [task]="task"
+            (deleteTask)="deleteTask($event)"
+            (taskUpdated)="updateTask($event)"
+          />
+        }
+      </div>
+    } @else {
+      <p class="text-center text-4xl mt-10 text-gray-600">No Tasks yet.</p>
+    }
 
     <!-- <app-task-form (taskCreated)="loadTasks(selectedStatus())" /> -->
   </div>
