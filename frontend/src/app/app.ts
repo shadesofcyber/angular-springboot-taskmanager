@@ -5,12 +5,21 @@ import { firstValueFrom } from 'rxjs';
 import { StatusFilterComponent } from './components/status-filter/status-filter';
 import { TaskCardComponent } from './components/task-card/task-card';
 import { TaskFormComponent } from './components/task-form/task-form';
+import { OverviewCard } from './components/overview-card/overview-card';
+import { LucideCircleCheckBig, LucideLayoutList } from '@lucide/angular';
 
 type TaskStatusFilter = 'ALL' | 'TODO' | 'IN_PROGRESS' | 'COMPLETED';
 
 @Component({
   selector: 'app-root',
-  imports: [StatusFilterComponent, TaskCardComponent, TaskFormComponent],
+  imports: [
+    StatusFilterComponent,
+    TaskCardComponent,
+    TaskFormComponent,
+    OverviewCard,
+    LucideCircleCheckBig,
+    LucideLayoutList,
+  ],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

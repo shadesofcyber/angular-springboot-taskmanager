@@ -1,11 +1,12 @@
 import { Component, EventEmitter, Output, signal } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 import { firstValueFrom } from 'rxjs';
+import { LucidePlus } from '@lucide/angular';
 
 @Component({
   selector: 'app-task-form',
   standalone: true,
-  imports: [],
+  imports: [LucidePlus],
   templateUrl: './task-form.html',
   styleUrl: './task-form.css',
 })

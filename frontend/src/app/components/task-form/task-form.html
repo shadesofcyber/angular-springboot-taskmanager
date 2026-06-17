@@ -1,5 +1,5 @@
-<div class="mb-8 rounded-xl bg-white p-5 shadow">
-  <h2 class="mb-4 text-lg font-semibold">Create Task</h2>
+<div class="my-8 bg-white p-5 border-t border-t-custom-border">
+  <h2 class="mb-4 text-lg font-semibold text-center">Create Task</h2>
 
   <form (submit)="$event.preventDefault(); submitForm()" class="space-y-4">
     <input
@@ -47,12 +47,13 @@
         <option value="HIGH">High</option>
       </select>
     </div>
-
-    <button
-      type="submit"
-      class="tracking-wide cursor-pointer rounded-xl bg-primary px-10 py-3 text-lg font-medium text-white hover:bg-primary/90 transition-all duration-300"
-    >
-      + New Task
-    </button>
+    <div class="w-full flex items-center justify-center">
+      <button
+        type="submit"
+        class="flex items-center gap-2 justify-between tracking-wide cursor-pointer rounded-xl bg-primary px-10 py-3 text-lg font-medium text-white hover:bg-primary/90 transition-all duration-300 shadow"
+      >
+        <svg lucidePlus class="size-5" /> <span>New Task</span>
+      </button>
+    </div>
   </form>
 </div>
