@@ -2,9 +2,9 @@
   @for (status of statuses; track status.value) {
     <button
       (click)="selectStatus(status.value)"
-      class="rounded-full px-4 py-2 text-sm font-medium cursor-pointer"
-      [class.bg-gray-900]="selectedStatus === status.value"
-      [class.text-white]="selectedStatus === status.value"
+      class="rounded-lg px-6 py-2.5 text-sm font-semibold tracking-wide cursor-pointer border border-custom-border text-gray-600"
+      [class.bg-primary-light]="selectedStatus === status.value"
+      [class.text-primary]="selectedStatus === status.value"
       [class.bg-white]="selectedStatus !== status.value"
     >
       {{ status.label }}

@@ -1,3 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import 'tailwindcss';
+
+@theme {
+  --color-primary: #514ffc;
+  --color-primary-light: #f5f3fd;
+
+  --color-success: #42b363;
+  --color-success-light: #e9f8ec;
+
+  --color-todo: #faa143;
+  --color-todo-light: #fef3ea;
+
+  --color-progress: #2e82fd;
+  --color-progress-light: #ecf2fe;
+
+  --color-danger: #eb4935;
+  --color-custom-border: #d6d8dd;
+}
