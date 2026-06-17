@@ -1,0 +1,41 @@
+<div class="flex justify-between items-center my-4 rounded-lg bg-white p-4 shadow">
+  <div class="flex flex-col justify-between">
+    <h2 class="font-semibold">
+      {{ task.title }}
+    </h2>
+
+    <p class="text-sm text-gray-500">
+      {{ task.description }}
+    </p>
+
+    <p>{{ formatStatus(task.status) }}</p>
+    <p>Priority: {{ formatPriority(task.priority) }}</p>
+    <button
+      type="button"
+      (click)="deleteTask.emit(task.id)"
+      class="cursor-pointer mt-4 rounded-lg bg-red-50 px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-100 transition-colors duration-300"
+    >
+      Delete
+    </button>
+  </div>
+  <div class="flex justify-center gap-2 h-fit">
+    <select
+      class="rounded-lg border border-gray-200 px-3 py-1"
+      [value]="task.status"
+      (change)="onStatusChange($any($event.target).value)"
+    >
+      <option value="TODO">To Do</option>
+      <option value="IN_PROGRESS">In Progress</option>
+      <option value="COMPLETED">Completed</option>
+    </select>
+    <select
+      class="rounded-lg border border-gray-200 px-3 py-1"
+      [value]="task.priority"
+      (change)="onPriorityChange($any($event.target).value)"
+    >
+      <option value="LOW">Low</option>
+      <option value="MEDIUM">Medium</option>
+      <option value="HIGH">High</option>
+    </select>
+  </div>
+</div>

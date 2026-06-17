@@ -1,0 +1,18 @@
+<div class="min-h-screen bg-gray-100 p-8">
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold">TaskPad</h1>
+    <p class="mt-2 text-gray-500">Manage your tasks and track your progress.</p>
+  </div>
+
+  <app-status-filter [selectedStatus]="selectedStatus()" (statusChange)="loadTasks($event)" />
+
+  @for (task of tasks(); track task.id) {
+    <app-task-card
+      [task]="task"
+      (deleteTask)="deleteTask($event)"
+      (taskUpdated)="updateTask($event)"
+    />
+  }
+
+  <app-task-form (taskCreated)="loadTasks(selectedStatus())" />
+</div>
