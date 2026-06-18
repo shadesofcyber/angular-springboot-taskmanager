@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, computed } from '@angular/core';
 import { TaskService } from './services/task.service';
 import { Task } from './models/task';
 import { firstValueFrom } from 'rxjs';
@@ -26,34 +26,43 @@ type TaskStatusFilter = 'ALL' | 'TODO' | 'IN_PROGRESS' | 'COMPLETED';
 export class App implements OnInit {
   protected readonly title = signal('frontend');
 
-  tasks = signal<Task[]>([]);
+  allTasks = signal<Task[]>([]);
   selectedStatus = signal<TaskStatusFilter>('ALL');
+  visibleTasks = computed(() => {
+    const status = this.selectedStatus();
+
+    if (status === 'ALL') {
+      return this.allTasks();
+    }
+
+    return this.allTasks().filter((task) => task.status === status);
+  });
 
   constructor(private taskService: TaskService) {}
 
   ngOnInit(): void {
-    this.loadTasks('ALL');
+    this.loadTasks();
   }
 
-  async loadTasks(status: TaskStatusFilter): Promise<void> {
-    this.selectedStatus.set(status);
+  async loadTasks(): Promise<void> {
+    const tasks = await firstValueFrom(this.taskService.getTasks());
 
-    const backendStatus = status === 'ALL' ? undefined : status;
-
-    const tasks = await firstValueFrom(this.taskService.getTasks(backendStatus));
-
-    this.tasks.set(tasks);
+    this.allTasks.set(tasks);
   }
 
   async deleteTask(id: number): Promise<void> {
     await firstValueFrom(this.taskService.deleteTask(id));
 
-    await this.loadTasks(this.selectedStatus());
+    await this.loadTasks();
   }
 
   async updateTask(task: Task): Promise<void> {
     await firstValueFrom(this.taskService.updateTask(task.id, task));
 
-    await this.loadTasks(this.selectedStatus());
+    await this.loadTasks();
+  }
+
+  changeStatusFilter(status: TaskStatusFilter): void {
+    this.selectedStatus.set(status);
   }
 }

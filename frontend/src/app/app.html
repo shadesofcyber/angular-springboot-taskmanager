@@ -1,93 +1,100 @@
 <div
-  class="min-h-screen bg-white border border-custom-border rounded-xl flex w-full mx-auto max-w-[1440px]"
+  class="bg-white border border-custom-border rounded-xl flex flex-col lg:flex-row w-full mx-auto max-w-360"
 >
   <!-- sidebar startin here -->
-  <div class="hidden lg:flex flex-col items-start justify-between border-r border-r-custom-border">
+  <div class="flex-col items-start justify-between lg:border-r border-r-custom-border">
     <div class="p-8 flex items-center justify-start gap-6 border-b border-b-custom-border w-full">
       <svg lucideCircleCheckBig class="size-10 text-primary"></svg>
       <h1 class="text-4xl font-bold">TaskPad</h1>
     </div>
     <!-- UI dummy elements -->
-    <div class="px-8 w-full">
-      <div
-        class="cursor-pointer flex flex-col gap-2 hover:bg-primary-light rounded-xl hover:text-primary py-4 px-4 transition-all duration-300"
-      >
-        <div class="flex flex-row items-center justify-between gap-4">
-          <svg lucideLayoutList class="size-7 text-primary"></svg>
-          <span class="text-lg w-full font-semibold text-gray-700">Dummy Element 1</span>
+    <div class="hidden lg:flex flex-col items-stretch justify-between mt-6 gap-2">
+      <div class="px-8 w-full">
+        <div
+          class="cursor-pointer flex flex-col gap-2 hover:bg-primary-light rounded-xl hover:text-primary py-4 px-4 transition-all duration-300"
+        >
+          <div class="flex flex-row items-center justify-between gap-4">
+            <svg lucideLayoutList class="size-7 text-primary"></svg>
+            <span class="text-lg w-full font-semibold text-gray-700">Dummy Element 1</span>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="px-8 w-full">
-      <div
-        class="cursor-pointer flex flex-col gap-2 hover:bg-primary-light rounded-xl hover:text-primary py-4 px-4 transition-all duration-300"
-      >
-        <div class="flex flex-row items-center justify-between gap-4">
-          <svg lucideLayoutList class="size-7 text-primary"></svg>
-          <span class="text-lg w-full font-semibold cursor-pointer text-gray-700"
-            >Dummy Element 2</span
-          >
+      <div class="px-8 w-full">
+        <div
+          class="cursor-pointer flex flex-col gap-2 hover:bg-primary-light rounded-xl hover:text-primary py-4 px-4 transition-all duration-300"
+        >
+          <div class="flex flex-row items-center justify-between gap-4">
+            <svg lucideLayoutList class="size-7 text-primary"></svg>
+            <span class="text-lg w-full font-semibold cursor-pointer text-gray-700"
+              >Dummy Element 2</span
+            >
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="px-8 w-full">
-      <div
-        class="cursor-pointer flex flex-col gap-2 hover:bg-primary-light rounded-xl hover:text-primary py-4 px-4 transition-all duration-300"
-      >
-        <div class="flex flex-row items-center justify-between gap-4">
-          <svg lucideLayoutList class="size-7 text-primary"></svg>
-          <span class="text-lg w-full font-semibold cursor-pointer text-gray-700"
-            >Dummy Element 3</span
-          >
+      <div class="px-8 w-full">
+        <div
+          class="cursor-pointer flex flex-col gap-2 hover:bg-primary-light rounded-xl hover:text-primary py-4 px-4 transition-all duration-300"
+        >
+          <div class="flex flex-row items-center justify-between gap-4">
+            <svg lucideLayoutList class="size-7 text-primary"></svg>
+            <span class="text-lg w-full font-semibold cursor-pointer text-gray-700"
+              >Dummy Element 3</span
+            >
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="px-8 w-full">
-      <div
-        class="cursor-pointer flex flex-col gap-2 hover:bg-primary-light rounded-xl hover:text-primary py-4 px-4 transition-all duration-300"
-      >
-        <div class="flex flex-row items-center justify-between gap-4">
-          <svg lucideLayoutList class="size-7 text-primary"></svg>
-          <span class="text-lg w-full font-semibold cursor-pointer text-gray-700"
-            >Dummy Element 4</span
-          >
+      <div class="px-8 w-full">
+        <div
+          class="cursor-pointer flex flex-col gap-2 hover:bg-primary-light rounded-xl hover:text-primary py-4 px-4 transition-all duration-300"
+        >
+          <div class="flex flex-row items-center justify-between gap-4">
+            <svg lucideLayoutList class="size-7 text-primary"></svg>
+            <span class="text-lg w-full font-semibold cursor-pointer text-gray-700"
+              >Dummy Element 4</span
+            >
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="px-8 w-full">
-      <div
-        class="cursor-pointer flex flex-col gap-2 hover:bg-primary-light rounded-xl hover:text-primary py-4 px-4 transition-all duration-300"
-      >
-        <div class="flex flex-row items-center justify-between gap-4">
-          <svg lucideLayoutList class="size-7 text-primary"></svg>
-          <span class="text-lg w-full font-semibold cursor-pointer text-gray-700"
-            >Dummy Element 5</span
-          >
+      <div class="px-8 w-full">
+        <div
+          class="cursor-pointer flex flex-col gap-2 hover:bg-primary-light rounded-xl hover:text-primary py-4 px-4 transition-all duration-300"
+        >
+          <div class="flex flex-row items-center justify-between gap-4">
+            <svg lucideLayoutList class="size-7 text-primary"></svg>
+            <span class="text-lg w-full font-semibold cursor-pointer text-gray-700"
+              >Dummy Element 5</span
+            >
+          </div>
         </div>
       </div>
     </div>
     <!-- UI Dummy Elements - End -->
-    <app-task-form (taskCreated)="loadTasks(selectedStatus())" />
+    <app-task-form (taskCreated)="loadTasks()" />
   </div>
 
   <div class="flex flex-col p-8">
     <div class="mb-8">
-      <h1 class="text-3xl font-bold">Task Panel</h1>
-      <p class="mt-2 text-gray-500">Manage your tasks and track your progress.</p>
+      <h1 class="text-center lg:text-left text-3xl font-bold">Task Panel</h1>
+      <p class="text-center lg:text-left mt-2 text-gray-500">
+        Manage your tasks and track your progress.
+      </p>
     </div>
-    <app-overview-card [tasks]="tasks()" />
+    <app-overview-card [tasks]="allTasks()" />
 
-    <app-status-filter [selectedStatus]="selectedStatus()" (statusChange)="loadTasks($event)" />
+    <app-status-filter
+      [selectedStatus]="selectedStatus()"
+      (statusChange)="changeStatusFilter($event)"
+    />
 
-    @if (tasks().length > 0) {
+    @if (visibleTasks().length > 0) {
       <div
         class="border border-custom-border rounded-xl flex flex-col divide-y divide-custom-border overflow-hidden"
       >
-        @for (task of tasks(); track task.id) {
+        @for (task of visibleTasks(); track task.id) {
           <app-task-card
             [task]="task"
             (deleteTask)="deleteTask($event)"

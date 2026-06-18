@@ -110,6 +110,14 @@ REST API
 
 Das Frontend nutzt Angular Components für die UI und Angular Services für die Kommunikation mit dem Spring-Boot-Backend.
 
+## Voraussetzungen
+
+Für die lokale Ausführung werden folgende Komponenten benötigt:
+
+- JDK 17
+- Node.js 20 oder höher
+- Git
+
 ## API-Dokumentation
 
 Nach dem Start des Backends ist die Swagger UI erreichbar unter:
