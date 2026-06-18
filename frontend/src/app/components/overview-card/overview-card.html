@@ -1,63 +1,69 @@
-<div class="grid grid-cols-4 gap-8 mb-8">
+<div class="grid grid-cols-2 xl:grid-cols-4 gap-3 md:gap-6 mb-8">
   <div
-    class="bg-white border border-custom-border rounded-lg px-5 pt-4 pb-8 flex justify-between shadow"
+    class="bg-white border border-custom-border rounded-lg px-5 pt-4 pb-8 flex justify-between items-start shadow"
   >
     <div class="flex flex-col space-y-5">
-      <p class="text-md font-semibold tracking-wide text-gray-800">All Tasks</p>
-      <div class="text-4xl text-primary font-bold tracking-tight">{{ totalTasks() }}</div>
+      <p class="text-sm md:text-md font-semibold tracking-wide text-gray-800">All Tasks</p>
+      <div class="text-3xl md:text-4xl text-primary font-bold tracking-tight">
+        {{ totalTasks() }}
+      </div>
       <p class="text-gray-500 text-sm font-semibold">Total amount of tasks</p>
     </div>
     <div class="flex items-center gap-2 text-primary">
-      <div class="bg-primary-light p-3 rounded-full">
-        <svg lucideLayoutList class="size-6"></svg>
+      <div class="bg-primary-light p-2 md:p-2.5 rounded-full">
+        <svg lucideLayoutList class="size-4 md:size-5"></svg>
       </div>
     </div>
   </div>
 
   <!--  -->
   <div
-    class="bg-white border border-custom-border rounded-lg px-5 pt-4 pb-8 flex justify-between shadow"
+    class="bg-white border border-custom-border rounded-lg px-5 pt-4 pb-8 flex justify-between items-start shadow"
   >
     <div class="flex flex-col space-y-5">
-      <p class="text-md font-semibold tracking-wide text-gray-800">To Do</p>
-      <div class="text-4xl text-todo font-bold tracking-tight">{{ todoTasks() }}</div>
+      <p class="text-sm md:text-md font-semibold tracking-wide text-gray-800">To Do</p>
+      <div class="text-3xl md:text-4xl text-todo font-bold tracking-tight">{{ todoTasks() }}</div>
       <p class="text-gray-500 text-sm font-semibold">Tasks to do</p>
     </div>
     <div class="flex items-center gap-2 text-todo">
-      <div class="bg-todo-light p-3 rounded-full">
-        <svg lucideClock class="size-6"></svg>
+      <div class="bg-todo-light p-2 md:p-2.5 rounded-full">
+        <svg lucideClock class="size-4 md:size-5"></svg>
       </div>
     </div>
   </div>
 
   <!--  -->
   <div
-    class="bg-white border border-custom-border rounded-lg px-5 pt-4 pb-8 flex justify-between shadow"
+    class="bg-white border border-custom-border rounded-lg px-5 pt-4 pb-8 flex justify-between items-start shadow"
   >
     <div class="flex flex-col space-y-5">
-      <p class="text-md font-semibold tracking-wide text-gray-800">In Progress</p>
-      <div class="text-4xl text-progress font-bold tracking-tight">{{ inProgressTasks() }}</div>
+      <p class="text-sm md:text-md font-semibold tracking-wide text-gray-800">In Progress</p>
+      <div class="text-3xl md:text-4xl text-progress font-bold tracking-tight">
+        {{ inProgressTasks() }}
+      </div>
       <p class="text-gray-500 text-sm font-semibold">Tasks in progress</p>
     </div>
     <div class="flex items-center gap-2 text-progress">
-      <div class="bg-progress-light p-3 rounded-full">
-        <svg lucideLoader class="size-6"></svg>
+      <div class="bg-progress-light p-2 md:p-2.5 rounded-full">
+        <svg lucideLoader class="size-4 md:size-5"></svg>
       </div>
     </div>
   </div>
 
   <!--  -->
   <div
-    class="bg-white border border-custom-border rounded-lg px-5 pt-4 pb-8 flex justify-between shadow"
+    class="bg-white border border-custom-border rounded-lg px-5 pt-4 pb-8 flex justify-between items-start shadow"
   >
     <div class="flex flex-col space-y-5">
-      <p class="text-md font-semibold tracking-wide text-gray-800">Completed</p>
-      <div class="text-4xl text-success font-bold tracking-tight">{{ completedTasks() }}</div>
+      <p class="text-sm md:text-md font-semibold tracking-wide text-gray-800">Completed</p>
+      <div class="text-3xl md:text-4xl text-success font-bold tracking-tight">
+        {{ completedTasks() }}
+      </div>
       <p class="text-gray-500 text-sm font-semibold">Finished tasks</p>
     </div>
     <div class="flex items-center gap-2 text-success">
-      <div class="bg-success-light p-3 rounded-full">
-        <svg lucideCircleCheck class="size-6"></svg>
+      <div class="bg-success-light p-2 md:p-2.5 rounded-full">
+        <svg lucideCircleCheck class="size-4 md:size-5"></svg>
       </div>
     </div>
   </div>

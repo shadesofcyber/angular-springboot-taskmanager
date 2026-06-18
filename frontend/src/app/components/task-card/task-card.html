@@ -1,14 +1,18 @@
-<div class="grid grid-cols-[2fr_1.5fr_1fr] w-full items-center rounded-xl bg-white py-6 px-8">
-  <div class="min-w-0 overflow-hidden">
+<div
+  class="grid grid-cols-2 xl:grid-cols-3 gap-4 w-full items-center rounded-xl bg-white py-6 px-8"
+>
+  <div class="min-w-0 overflow-hidden flex flex-col gap-2">
     <h2 class="font-semibold">
       {{ task.title }}
     </h2>
 
-    <p class="text-sm text-gray-500">
+    <p class="text-sm text-gray-500 max-w-[300px] flex-wrap">
       {{ task.description }}
     </p>
   </div>
-  <div class="justify-self-start flex items-center gap-8 whitespace-nowrap">
+  <div
+    class="justify-self-center md:justify-self-start flex flex-col md:flex-row items-center gap-3 md:gap-6 whitespace-nowrap"
+  >
     <p
       class="w-32 shrink-0 text-center font-semibold rounded-2xl py-2 px-5 text-sm text-danger bg-danger/15"
       [class.bg-progress-light]="task.status === 'IN_PROGRESS'"
@@ -30,7 +34,9 @@
       </p>
     </div>
   </div>
-  <div class="justify-self-end grid grid-cols-2 justify-center gap-2 h-fit">
+  <div
+    class="w-full col-span-2 xl:col-span-1 grid grid-cols-2 justify-center gap-2 h-fit mt-5 xl:mt-0"
+  >
     <select
       class="rounded-lg border border-gray-200 px-4 py-2 text-sm font-semibold text-gray-600 cursor-pointer"
       [value]="task.status"

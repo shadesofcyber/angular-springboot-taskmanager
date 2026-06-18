@@ -1,4 +1,4 @@
-<div class="mb-8 flex gap-3">
+<div class="mb-8 grid grid-cols-2 md:flex gap-3">
   @for (status of statuses; track status.value) {
     <button
       (click)="selectStatus(status.value)"
