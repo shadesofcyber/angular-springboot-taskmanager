@@ -114,9 +114,9 @@ Das Frontend nutzt Angular Components für die UI und Angular Services für die 
 
 Für die lokale Ausführung werden folgende Komponenten benötigt:
 
-- JDK 17
-- Node.js 20 oder höher
-- Git
+- Java JDK 17 für das Spring Boot Backend
+- Node.js 22 LTS für das Angular Frontend
+- npm, wird mit Node.js installiert
 
 ## API-Dokumentation
 
