@@ -5,8 +5,8 @@ on:
     branches:
       - main
     paths:
-      - 'backend/**'
-      - '.github/workflows/backend-deploy.yml'
+      - "backend/**"
+      - ".github/workflows/backend-deploy.yml"
 
 jobs:
   build-and-deploy:
@@ -15,6 +15,20 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "17"
+
+      - name: Make Gradle wrapper executable
+        run: chmod +x ./gradlew
+        working-directory: backend
+
+      - name: Run backend tests
+        run: ./gradlew test
+        working-directory: backend
 
       - name: Log in to ACR
         uses: azure/docker-login@v2
@@ -34,6 +48,6 @@ jobs:
       - name: Deploy container to Azure App Service
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'webapp-task-api-dev'
+          app-name: "webapp-task-api-dev"
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          images: '${{ secrets.ACR_LOGIN_SERVER }}/task-api:dev'
+          images: "${{ secrets.ACR_LOGIN_SERVER }}/task-api:dev"
