@@ -39,15 +39,15 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ${{ secrets.ACR_LOGIN_SERVER }}/task-api:dev ./backend
+          docker build -t ${{ secrets.ACR_LOGIN_SERVER }}/task-api:${{ github.sha }} ./backend
 
       - name: Push Docker image
         run: |
-          docker push ${{ secrets.ACR_LOGIN_SERVER }}/task-api:dev
+          docker push ${{ secrets.ACR_LOGIN_SERVER }}/task-api:${{ github.sha }}
 
       - name: Deploy container to Azure App Service
         uses: azure/webapps-deploy@v3
         with:
           app-name: "webapp-task-api-dev"
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          images: "${{ secrets.ACR_LOGIN_SERVER }}/task-api:dev"
+          images: "${{ secrets.ACR_LOGIN_SERVER }}/task-api:${{ github.sha }}"
