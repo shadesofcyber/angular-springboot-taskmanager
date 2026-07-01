@@ -2,7 +2,7 @@
 
 Eine Full-Stack Task-Management-Anwendung mit Angular-Frontend und Spring-Boot-Backend.
 
-Das Projekt zeigt eine typische mehrschichtige Architektur mit REST API, DTOs, Validierung, Exception Handling, Status-Filterung, CRUD-Funktionen und interaktiver API-Dokumentation über Swagger / OpenAPI.
+Das Projekt zeigt eine typische mehrschichtige Architektur mit REST API, DTOs, Validierung, Exception Handling, Status-Filterung, CRUD-Funktionen, PostgreSQL-Persistenz und interaktiver API-Dokumentation über Swagger / OpenAPI.
 
 ## Screenshots
 
@@ -32,10 +32,13 @@ Das Projekt zeigt eine typische mehrschichtige Architektur mit REST API, DTOs, V
 - Gradle
 - Spring Web
 - Spring Data JPA
-- H2 In-Memory Database
+- PostgreSQL
+- Docker Compose
 - Jakarta Validation
 - Lombok
 - Swagger / OpenAPI mit Springdoc 3.0.3
+- Spring Boot Actuator
+- Testcontainers mit PostgreSQL
 
 ## Features
 
@@ -56,9 +59,12 @@ Das Projekt zeigt eine typische mehrschichtige Architektur mit REST API, DTOs, V
 - Validierung eingehender Daten
 - Globales Exception Handling
 - Status-Filterung über Query Parameter
-- Persistenz mit Spring Data JPA
-- H2-Datenbank für lokale Entwicklung
+- Persistenz mit Spring Data JPA und PostgreSQL
+- Lokale Datenbank über Docker Compose
+- Konfiguration über Spring Profiles und Environment Variables
 - Swagger / OpenAPI Dokumentation
+- Health Endpoint über Spring Boot Actuator
+- Integration Tests mit PostgreSQL Testcontainers
 
 ### Frontend-Funktionen
 
@@ -117,6 +123,86 @@ Für die lokale Ausführung werden folgende Komponenten benötigt:
 - Java JDK 17 für das Spring Boot Backend
 - Node.js 22 LTS für das Angular Frontend
 - npm, wird mit Node.js installiert
+- Docker Desktop oder Docker Engine
+
+## Lokale Datenbank starten
+
+Das Projekt nutzt PostgreSQL für die lokale Entwicklung. Die Datenbank wird über Docker Compose gestartet.
+
+Im Projekt-Root:
+
+`docker compose up -d`
+
+Dadurch wird ein PostgreSQL-Container gestartet.
+
+Standardwerte für die lokale Datenbank:
+
+```
+Database: taskmanager
+Username: taskuser
+Password: taskpassword
+Port: 5432
+```
+
+Falls die Container neu gebaut werden sollen:
+
+`docker compose up -d --build`
+
+Falls die Container gestoppt werden sollen:
+
+`docker compose down`
+
+## Backend-Konfiguration
+
+Das Backend nutzt Spring Profiles und Environment Variables.
+
+Die lokale Entwicklungsumgebung verwendet Standardwerte, falls keine Environment Variables gesetzt sind:
+
+```
+spring.datasource.url=${DB_URL:jdbc:postgresql://localhost:5432/taskmanager}
+spring.datasource.username=${DB_USERNAME:taskuser}
+spring.datasource.password=${DB_PASSWORD:taskpassword}
+
+spring.jpa.hibernate.ddl-auto=${DDL_AUTO:update}
+spring.jpa.show-sql=${SHOW_SQL:true}
+spring.jpa.properties.hibernate.format_sql=true
+```
+
+Dadurch kann das Backend lokal direkt mit der Docker-PostgreSQL-Datenbank gestartet werden.
+
+## Backend starten
+
+Im Backend-Ordner:
+
+```
+cd backend
+./gradlew bootRun
+```
+
+Auf Windows:
+
+```
+cd backend
+.\gradlew bootRun
+```
+
+Backend läuft standardmäßig unter:
+
+http://localhost:8080
+
+## Frontend starten
+
+Im Frontend-Ordner:
+
+```
+cd frontend
+npm install
+npm start
+```
+
+Frontend läuft standardmäßig unter:
+
+http://localhost:4200
 
 ## API-Dokumentation
 
@@ -132,42 +218,31 @@ Die OpenAPI JSON-Dokumentation ist erreichbar unter:
 http://localhost:8080/v3/api-docs
 ```
 
-## Backend starten
+## Health Check
 
-```bash
+Das Backend stellt über Spring Boot Actuator einen Health Endpoint bereit:
+
+http://localhost:8080/actuator/health
+
+## Tests
+
+Das Backend nutzt Testcontainers, um Integration Tests gegen eine echte PostgreSQL-Testdatenbank auszuführen.
+
+Tests lokal starten:
+
+```
 cd backend
-./gradlew bootRun
+./gradlew test
 ```
 
-Backend läuft standardmäßig unter:
+Auf Windows:
 
-```text
-http://localhost:8080
+```
+cd backend
+.\gradlew test
 ```
 
-## Frontend starten
-
-```bash
-cd frontend
-npm install
-npm start
-```
-
-Frontend läuft standardmäßig unter:
-
-```text
-http://localhost:4200
-```
-
-## Lokale Datenbank
-
-Das Projekt nutzt aktuell H2 als In-Memory-Datenbank.
-
-Das bedeutet:
-
-- keine zusätzliche Datenbankinstallation notwendig
-- ideal für lokale Entwicklung und Tests
-- Daten werden beim Neustart der Anwendung zurückgesetzt
+Während der Tests startet Testcontainers automatisch einen PostgreSQL-Container. Docker muss dafür lokal laufen.
 
 ## Beispiel-Endpunkte
 
@@ -200,7 +275,3 @@ DELETE /api/tasks/{id}
 ```
 
 Löscht eine Task.
-
-## Zweck des Projekts
-
-Dieses Projekt wurde als Portfolio-Projekt zur Vorbereitung auf eine Entwicklerrolle erstellt. Ziel war es, den typischen Architektur-Workflow mit Angular und Java Spring Boot praktisch umzusetzen.
