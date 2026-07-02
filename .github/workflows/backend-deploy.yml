@@ -56,4 +56,5 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: "webapp-task-api-dev"
+          slot-name: "staging"
           images: "${{ secrets.ACR_LOGIN_SERVER }}/task-api:${{ github.sha }}"
